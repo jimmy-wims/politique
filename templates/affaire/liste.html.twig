@@ -1,0 +1,34 @@
+{% extends "layoutgeneral.html.twig" %}
+
+{% block titre %}
+ 	Les Affaires
+{% endblock %}
+
+{% block contenu %}
+	<ul>
+		{% for affaire in affaires %}
+			<li>
+				{{ affaire.id }} - 
+				<a href="{{ path('affaire_voir', {'id': affaire.id }) }}">
+						{{affaire.designation}}</a>
+				<ul>
+					<li>Politiciens : 
+						<ul>
+							{% for politicien in affaire.lesPoliticiens %}
+								<li>
+									<a href="{{ path('politicien_voir', {'id': politicien.id }) }}">
+									{{politicien.nom }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
+			</li>
+		{% endfor %}
+	</ul>
+	{% if is_granted('ROLE_SECRETAIRE') %} 
+		<a href="{{ path('affaire_ajouter') }}"> Ajouter une affaire</a>
+	{% endif %}
+	<br/>
+	<a href="{{ path('affaire_chercher') }}"> Chercher une affaire</a>
+{% endblock %}

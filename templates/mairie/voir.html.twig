@@ -1,0 +1,27 @@
+{% extends "layoutgeneral.html.twig" %}
+
+{% block titre %}
+ 	Mairie : {{mairie.id}}
+{% endblock %}
+
+{% block contenu %}
+	<ul>
+		<li>Ville : {{mairie.ville}}</li>
+		<li>Candidats : 
+			<ul>
+				{% for politicien in mairie.lesPoliticiens %}
+					<li>
+						<a href="{{ path('politicien_voir', {'id': politicien.id }) }}">
+							{{politicien.nom }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</li>
+	</ul>
+	{% if mairie.lesPoliticiens.count() == 0 %}
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('mairie_remove', {'id': mairie.id }) }}">
+				Supprimer cette mairie</a>	
+		{% endif %}
+	{% endif %}
+{% endblock %}

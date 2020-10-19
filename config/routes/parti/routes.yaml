@@ -1,0 +1,23 @@
+parti_index:
+  path: /
+  controller: App\Controller\PartiController::liste
+
+parti_ajouter:
+ path: /ajouter
+ controller: App\Controller\PartiController::ajouter
+
+parti_voir:
+ path: /voir/{id}
+ controller: App\Controller\PartiController::voir
+ requirements:
+    id: \d+
+
+parti_liste:
+ path: /liste
+ controller: App\Controller\PartiController::liste
+
+parti_remove:
+ path: /remove/{id}
+ controller: App\Controller\PartiController::remove
+ requirements:
+    id: \d+

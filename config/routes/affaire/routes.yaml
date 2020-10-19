@@ -1,0 +1,38 @@
+affaire_index:
+  path: /
+  controller: App\Controller\AffaireController::liste
+
+affaire_ajouter:
+ path: /ajouter
+ controller: App\Controller\AffaireController::ajouter
+
+affaire_voir:
+ path: /voir/{id}
+ controller: App\Controller\AffaireController::voir
+ requirements:
+    id: \d+
+
+affaire_liste:
+ path: /liste
+ controller: App\Controller\AffaireController::liste
+
+affaire_politicien:
+ path: /politicien/{id}
+ controller: App\Controller\AffaireController::gererPoliticien
+ requirements:
+    id: \d+
+
+affaire_politicien_suite:
+ path: /politicienSuite/{id}
+ controller: App\Controller\AffaireController::gererPoliticienSuite
+ methods: POST
+
+affaire_remove:
+ path: /remove/{id}
+ controller: App\Controller\AffaireController::remove
+ requirements:
+    id: \d+
+
+affaire_chercher:
+ path: /chercher
+ controller: App\Controller\AffaireController::chercher

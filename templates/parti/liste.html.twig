@@ -1,0 +1,20 @@
+{% extends "layoutgeneral.html.twig" %}
+
+{% block titre %}
+ 	Les partis
+{% endblock %}
+
+{% block contenu %}
+	<ul>
+		{% for parti in partis %}
+			<li>
+				{{ parti.id }} - 
+				<a href="{{ path('parti_voir', {'id': parti.id }) }}">
+						{{parti.nom }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+	{% if is_granted('ROLE_SECRETAIRE') %}
+		<a href="{{ path('parti_ajouter') }}"> Ajouter un parti</a>
+	{% endif %}
+{% endblock %}

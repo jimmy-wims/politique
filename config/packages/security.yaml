@@ -1,0 +1,44 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: username 
+        # used to reload user from session & other features (e.g. switch_user)
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_SECRETAIRE
+        ROLE_SECRETAIRE: ROLE_USER
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        politique:
+            pattern: ^/
+            anonymous: true
+            provider: app_user_provider
+            form_login:
+                login_path: login
+                check_path: login 
+            logout:
+                path: /logout
+                target: /politique
+
+    access_control:
+        - { path: ^/politique/(mairie|politicien|parti|affaire)/ajouter$, roles: ROLE_SECRETAIRE }
+        - { path: ^/politique/(mairie|politicien|parti|affaire)/modifier$, roles: ROLE_SECRETAIRE }
+        - { path: '^/politique/(mairie|politicien|parti|affaire)/remove/[0-9]*', roles: ROLE_ADMIN }
+
+    encoders:
+        App\Entity\User: 'auto'
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    #access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }

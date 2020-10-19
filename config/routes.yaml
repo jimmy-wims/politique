@@ -1,0 +1,23 @@
+index:
+  path: /
+  controller: App\Controller\PolitiqueController::index
+
+politique :
+  resource: routes/politique/routes.yaml
+  prefix:  /politique
+
+mairie :
+  resource: routes/mairie/routes.yaml
+  prefix:  /politique/mairie
+
+parti :
+  resource: routes/parti/routes.yaml
+  prefix:  /politique/parti
+
+politicien :
+  resource: routes/politicien/routes.yaml
+  prefix:  /politique/politicien
+
+affaire:
+  resource: routes/affaire/routes.yaml
+  prefix:  /politique/affaire

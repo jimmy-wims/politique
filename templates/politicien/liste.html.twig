@@ -1,0 +1,20 @@
+{% extends "layoutgeneral.html.twig" %}
+
+{% block titre %}
+ 	Les politiciens
+{% endblock %}
+
+{% block contenu %}
+	<ul>
+		{% for politicien in politiciens %}
+			<li>
+				{{ politicien.id }} - 
+				<a href="{{ path('politicien_voir', {'id': politicien.id }) }}">
+					{{politicien.nom }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+	{% if is_granted('ROLE_SECRETAIRE') %}
+		<a href="{{ path('politicien_ajouter') }}"> Ajouter un politicien</a>
+	{% endif %}
+{% endblock %}

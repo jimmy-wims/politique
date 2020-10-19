@@ -1,0 +1,7 @@
+politique_index:
+  path: /
+  controller: App\Controller\PolitiqueController::index
+
+politique_navigation:
+  path: /navigation
+  controller: App\Controller\PolitiqueController::navigation

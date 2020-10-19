@@ -1,0 +1,39 @@
+{% extends "layoutgeneral.html.twig" %}
+
+{% block titre %}
+ 	Menu :
+{% endblock %}
+
+{% block contenu %}
+	<ul>
+		<li>
+			<H2>Gestion des affaires</H2>
+			<ul>
+				<li><a href="{{ path('affaire_liste')}}">Liste des affaires</a></li>
+				<li><a href="{{path('affaire_ajouter')}}">Ajouter une affaire</a></li>
+				<li><a href="{{path('affaire_chercher')}}">Chercher une affaire</a></li>
+			</ul>
+		</li>
+		<li>
+			<H2>Gestion des mairies</H2>
+			<ul>
+				<li><a href="{{ path('mairie_liste')}}">Liste des mairies</a></li>
+				<li><a href="{{path('mairie_ajouter')}}">Ajouter une mairie</a></li>
+			</ul>
+		</li>
+		<li>
+			<H2>Gestion des partis</H2>
+			<ul>
+				<li><a href="{{ path('parti_liste')}}">Liste des partis</a></li>
+				<li><a href="{{path('parti_ajouter')}}">Ajouter un parti</a></li>
+			</ul>
+		</li>
+		<li>
+			<H2>Gestion des politiciens</H2>
+			<ul>
+				<li><a href="{{ path('politicien_liste')}}">Liste des politiciens</a></li>
+				<li><a href="{{path('politicien_ajouter')}}">Ajouter un politicien</a></li>
+			</ul>
+		</li>
+	</ul>
+{% endblock %}

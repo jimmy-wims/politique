@@ -1,0 +1,30 @@
+{% extends "layoutgeneral.html.twig" %}
+
+{% block titre %}
+ 	Affaire : {{affaire.id}}
+{% endblock %}
+
+{% block contenu %}
+	<ul>
+		<li>Désignation : {{affaire.designation}}</li>
+		<li>Politiciens : 
+			<ul>
+				{% for politicien in affaire.lesPoliticiens %}
+					<li>
+						<a href="{{ path('politicien_voir', {'id': politicien.id }) }}">
+							{{politicien.nom }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</li>
+	</ul>
+	{% if is_granted('ROLE_SECRETAIRE') %} 
+		<a href="{{ path('affaire_politicien', {'id': affaire.id }) }}">Gérer les politiciens</a>
+	{% endif %}
+	{% if affaire.lesPoliticiens.count() == 0 %}
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('affaire_remove', {'id': affaire.id }) }}">
+				Supprimer cette affaire</a>
+		{% endif %}
+	{% endif %}
+{% endblock %}

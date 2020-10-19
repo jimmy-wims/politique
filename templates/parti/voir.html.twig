@@ -1,0 +1,32 @@
+{% extends "layoutgeneral.html.twig" %}
+
+{% block titre %}
+ 	Parti : {{parti.id}}
+{% endblock %}
+
+{% block contenu %}
+	<ul>
+		<li>Nom : {{parti.nom}}</li>
+		<li>Politiciens : 
+			<ul>
+				{% for politicien in parti.lesPoliticiens %}
+					<li>
+						<a href="{{ path('politicien_voir', {'id': politicien.id }) }}">
+							{{politicien.nom }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</li>
+	</ul>
+
+	Il a {{nbFemme}}% de femmes et {{nbHomme}}% d'hommes.
+	<br/>
+	L'âge moyen de ce partie est {{ageMoyen}} ans.
+	<br/>
+	{% if parti.lesPoliticiens.count() == 0 %}
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('parti_remove', {'id': parti.id }) }}">
+				Supprimer ce parti</a>	
+		{% endif %}
+	{% endif %}
+{% endblock %}

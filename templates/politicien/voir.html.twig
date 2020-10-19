@@ -1,0 +1,23 @@
+{% extends "layoutgeneral.html.twig" %}
+
+{% block titre %}
+ 	Politicien : {{politicien.id}}
+{% endblock %}
+
+{% block contenu %}
+	<ul>
+		<li>Nom : {{politicien.nom}}</li>
+		<li>Sexe : {{politicien.sexe}}</li>
+		<li>Age : {{politicien.age}}</li>
+		<li>Parti : {{politicien.parti}}</li>
+		<li>Mairie : {{politicien.mairie}}</li>
+	</ul>
+	{% if is_granted('ROLE_SECRETAIRE') %}
+		<a href="{{ path('politicien_modifier', {'id': politicien.id }) }}">
+			Modifier ce politicien</a>
+	{% endif %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{ path('politicien_remove', {'id': politicien.id }) }}">
+			Supprimer ce politicien</a>	
+	{% endif %}
+{% endblock %}	

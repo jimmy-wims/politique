@@ -1,0 +1,23 @@
+mairie_index:
+  path: /
+  controller: App\Controller\MairieController::liste
+
+mairie_ajouter:
+ path: /ajouter
+ controller: App\Controller\MairieController::ajouter
+
+mairie_voir:
+ path: /voir/{id}
+ controller: App\Controller\MairieController::voir
+ requirements:
+    id: \d+
+
+mairie_liste:
+  path: /liste
+  controller: App\Controller\MairieController::liste
+
+mairie_remove:
+ path: /remove/{id}
+ controller: App\Controller\MairieController::remove
+ requirements:
+    id: \d+

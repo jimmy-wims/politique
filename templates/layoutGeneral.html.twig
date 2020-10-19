@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<div id="navigation" >
+			<hr />
+ 				{{ render(path('politique_navigation')) }}
+			<hr />
+		</div>
+		<h1>{% block titre %}{% endblock %}</h1>
+		<div id="contenu" >
+			{% block contenu %}
+			{% endblock %}
+		</div>
+		<hr />
+		<div id="pied_de_page" >
+			<p>&copy; JW.</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+politicien_index:
+  path: /
+  controller: App\Controller\PoliticienController::liste
+
+politicien_ajouter:
+ path: /ajouter
+ controller: App\Controller\PoliticienController::ajouter
+
+politicien_voir:
+ path: /voir/{id}
+ controller: App\Controller\PoliticienController::voir
+ requirements:
+    id: \d+
+
+politicien_liste:
+  path: /liste
+  controller: App\Controller\PoliticienController::liste
+
+politicien_modifier:
+ path: /modifier/{id}
+ controller: App\Controller\PoliticienController::modifier
+ requirements:
+    id: \d+
+
+politicien_modifier_suite:
+ path: /modifierSuite/{id}
+ controller: App\Controller\PoliticienController::modifierSuite
+ methods: POST
+
+politicien_remove:
+ path: /remove/{id}
+ controller: App\Controller\PoliticienController::remove
+ requirements:
+    id: \d+

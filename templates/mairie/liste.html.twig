@@ -1,0 +1,20 @@
+{% extends "layoutgeneral.html.twig" %}
+
+{% block titre %}
+ 	Les mairies
+{% endblock %}
+
+{% block contenu %}
+	<ul>
+		{% for mairie in mairies %}
+			<li>
+				{{ mairie.id }} - 
+				<a href="{{ path('mairie_voir', {'id': mairie.id }) }}">{{ 	mairie.ville }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+	{% if is_granted('ROLE_SECRETAIRE') %}
+		<a href="{{ path('mairie_ajouter') }}"> Ajouter une mairie</a>
+	{% endif %}
+{% endblock %}
+		
